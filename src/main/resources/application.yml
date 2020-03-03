@@ -18,3 +18,11 @@ zuul:
     ms-districts:
       path: /distritos/**
       stripPrefix: true
+    users:
+      path: /usuarios/**
+      stripPrefix: true
+    oauth:
+      path: /security/**
+      stripPrefix: true
+      sensitive-headers:
+      - Cookie , Set-Cookie
