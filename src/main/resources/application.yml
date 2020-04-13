@@ -12,6 +12,9 @@ eureka:
 zuul:
   prefix: /api
   routes:
+    ms-categorias:
+      path: /categories/**
+      stripPrefix: true
     ms-barrios:
       path: /barrios/**
       stripPrefix: true
@@ -27,6 +30,12 @@ zuul:
     ms-languages:
       path: /languages/**
       stripPrefix: true
+    ms-blogs:
+      path: /blogs/**
+      stripPrefix: true
+    ms-internationalization:
+      path: /internationalization/**
+      stripPrefix: true  
     users:
       path: /usuarios/**
       stripPrefix: true
