@@ -30,10 +30,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/api/security/oauth/**").permitAll()
-				.antMatchers(HttpMethod.GET , "/api/images/v1/section/1" , "/api/images/v1/section/1/image/**").permitAll()
+				.antMatchers(HttpMethod.GET , "/api/images/v1/section/1" ,"/api/categories/v1/**" , "/api/images/v1/section/1/image/**").permitAll()
 				.antMatchers(HttpMethod.GET , "/api/languages/{id}*", "/api/languages/v1/**","/api/categories/v1","/api/categories/v2").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/blogs/v1").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/images/v1").permitAll()
+				.antMatchers(HttpMethod.DELETE,"/api/blogs/v1/**").permitAll()
+				.antMatchers(HttpMethod.PUT,"/api/blogs/v1/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/categorias/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/usuarios/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/internationalization/v1/**").permitAll()
