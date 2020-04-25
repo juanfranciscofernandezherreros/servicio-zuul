@@ -7,3 +7,19 @@ server:
 spring:
   application:
     name: servicio-zuul-server
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 9000
+  ReadTimeout: 30000     
+zuul:
+  prefix: /api
+  routes:
+    servicio-languages:
+      path: /languages/**
+      stripPrefix: true
