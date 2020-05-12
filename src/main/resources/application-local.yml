@@ -8,7 +8,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER:http://servicio-eureka-server:8761/eureka}
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
 zuul:
   prefix: /api
   routes:
@@ -34,4 +34,7 @@ zuul:
      stripPrefix: true
     servicio-comentarios:
      path: /comentarios/**
-     stripPrefix: true 
+     stripPrefix: true
+    servicio-newsletter:
+     path: /newsletter/**
+     stripPrefix: true
