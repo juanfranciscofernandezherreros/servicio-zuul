@@ -10,10 +10,10 @@ pipelines:
   default:
     - step:
         services:
-          - docker
+          - docker 
         script: # Modify the commands below to build your repository.
           # Set $DOCKER_HUB_USERNAME and $DOCKER_HUB_PASSWORD as environment variables in repository settings
-          - export IMAGE_NAME=kfh1992/servicio-zuul-server:v1
+          - export IMAGE_NAME=kfh1992/servicio-zuul-server:v1 
           # Clean Package
           - mvn clean package -DskipTests          
           # build the Docker image (this will use the Dockerfile in the root of the repo)
