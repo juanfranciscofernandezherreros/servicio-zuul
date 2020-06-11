@@ -38,3 +38,12 @@ zuul:
     servicio-newsletter:
      path: /newsletter/**
      stripPrefix: true
+    servicio-blogs-popular:
+     path: /popular/**
+     stripPrefix: true
+    servicio-blogs-detail-urlseo:
+     path: /seo/**
+     stripPrefix: true
+    servicio-mail:
+     path: /mail/**
+     stripPrefix: true
