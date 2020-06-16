@@ -1,0 +1,8 @@
+steps: 
+  - name: maven:3.6.0-jdk-11-slim
+    entrypoint: 'mvn'
+    args: ['clean', 'package', '-DskipTests']
+  - name: 'gcr.io/cloud-builders/docker' 
+    args: ['build', '-t', 'gcr.io/white-rune-240209/servicio-zuul-server:v1', '.']
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/white-rune-240209/servicio-zuul-server:v1"]
