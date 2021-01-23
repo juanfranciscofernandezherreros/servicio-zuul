@@ -29,42 +29,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/api/security/oauth/**").permitAll()
-				.antMatchers(HttpMethod.GET , "/api/languages/{id}*", "/api/languages/v1/**").permitAll()
-				.antMatchers(HttpMethod.GET , "/api/comentarios/{id}*", "/api/comentarios/v1/**").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/comentarios/v1/**").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/blogs/v1/translate/**").permitAll()
-				.antMatchers(HttpMethod.PUT, "/api/comentarios/v1/**").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/blogs/v1").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/newsletter/public/v1**").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/newsletter/v1/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/v1/{id}/articles").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
-				.antMatchers(HttpMethod.DELETE, "/api/newsletter/v1").permitAll()
-				.antMatchers(HttpMethod.DELETE, "/api/newsletter/v1/**").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/blogs/public/v1/name/language/**").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/images/v1").permitAll()
-				.antMatchers(HttpMethod.DELETE,"/api/blogs/v1/**").permitAll()
-				.antMatchers(HttpMethod.PUT,"/api/blogs/v1/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/categorias/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/categorias/v1/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/categorias/v1/{id}").permitAll()
+		http.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/categories/public/v1/**").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/blogs/public/v1**").permitAll()
-				.antMatchers(HttpMethod.POST,"/api/comentarios/v2**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/seo/public/v1/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/comentarios/v2/{id}/respuestas**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/popular/v1/public**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/usuarios/**").permitAll()
-				.antMatchers(HttpMethod.POST,"/api/usuarios/v1/users").permitAll()
-				.antMatchers(HttpMethod.POST,"/api/usuarios/v1/usuarios").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/internationalization/v1/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/blogs/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/distritos","/api/barrios","/api/usuarios/usuarios").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/distritos/{id}", "/api/barrios/{id}","/api/usuarios/usuarios/{id}").permitAll()
-				.antMatchers(HttpMethod.PUT,"/api/distritos/{id}").hasRole("ADMIN")
-				.antMatchers(HttpMethod.POST,"/api/v1/**").hasRole("ADMIN")
+				.antMatchers(HttpMethod.GET, "/api/tags/**").permitAll()
 				.anyRequest().authenticated()
 				.and().cors().configurationSource(corsConfigurationSource());
 	}
@@ -96,10 +63,17 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	}
 	
 	@Bean
-	public FilterRegistrationBean<CorsFilter> corsFilter(){
-		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));
-		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-		return bean;
-	}
+	 public FilterRegistrationBean corsFilter() {
+	     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	     CorsConfiguration config = new CorsConfiguration();
+	     config.setAllowCredentials(true);
+	     config.addAllowedOrigin("*");
+	     config.addAllowedHeader("*");
+	     config.addAllowedMethod("*");
+	     source.registerCorsConfiguration("/**", config);
+	     FilterRegistrationBean bean = new FilterRegistrationBean(new org.springframework.web.filter.CorsFilter(source));
+	     bean.setOrder(0);
+	     return bean;
+	 }
 
 }

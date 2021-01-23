@@ -25,9 +25,7 @@ public class PreTiempoTranscurridoFilter extends ZuulFilter {
 
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
-
-		log.info(String.format("%s request enrutado a %s", request.getMethod(), request.getRequestURL().toString()));
-
+		
 		Long tiempoInicio = System.currentTimeMillis();
 		request.setAttribute("tiempoInicio", tiempoInicio);
 

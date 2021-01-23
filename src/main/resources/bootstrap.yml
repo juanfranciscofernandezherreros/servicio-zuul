@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: servicio-zuul
+zuul:
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+  prefix: /api
+  routes:
+    servicio-categorias:
+      path: /categories/**     
+      url: http://categorias-dot-servicio-blog.nw.r.appspot.com
+      stripPrefix: true      
+    servicio-tags:
+      path: /tags/**
+      url: http://tags-dot-servicio-blog.nw.r.appspot.com
+      sensitive-headers:
+      - Cookie , Set-Cookie
+    servicio-blogs:
+      path: /blogs/**
+      url: http://blogs-dot-servicio-blog.nw.r.appspot.com
+      sensitive-headers:
+      - Cookie , Set-Cookie
+    servicio-users:
+      path: /users/**
+      url: http://users-dot-servicio-blog.nw.r.appspot.com   
+      sensitive-headers:
+      - Cookie , Set-Cookie
+    servicio-comentarios:
+      path: /comentarios/**
+      url: http://comentarios-dot-servicio-blog.nw.r.appspot.com 
+      sensitive-headers:
+      - Cookie , Set-Cookie        
+    servicio-auth:
+      path: /auth/**
+      url: http://oauth2-dot-servicio-blog.nw.r.appspot.com
+      sensitive-headers:
+      - Cookie , Set-Cookie
