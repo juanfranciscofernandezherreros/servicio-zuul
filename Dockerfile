@@ -8,5 +8,5 @@ RUN mvn package && cp target/zuul-0.0.1-SNAPSHOT.jar zuul-0.0.1-SNAPSHOT.jar
 # Rely on Docker's multi-stage build to get a smaller image based on JRE
 FROM openjdk:8-jre-alpine
 WORKDIR /app
-COPY --from=maven /app/blogs-3.0.2-SNAPSHOT.jar ./zuul-0.0.1-SNAPSHOT.jar
+COPY --from=maven /app/zuul-0.0.1-SNAPSHOT.jar ./zuul-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/zuul-0.0.1-SNAPSHOT.jar"]
