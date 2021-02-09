@@ -10,7 +10,7 @@ zuul:
     servicio-categorias:
       path: /categories/**     
       url: 10.245.103.35
-      stripPrefix: true      
+      stripPrefix: true 
     servicio-tags:
       path: /tags/**
       url: 10.245.102.67
@@ -18,7 +18,7 @@ zuul:
       - Cookie , Set-Cookie
     servicio-blogs:
       path: /articles/**
-      url: http://174.138.124.201:8888
+      url: http://174.138.124.201:8888 
       sensitive-headers:
       - Cookie , Set-Cookie
     servicio-users:
