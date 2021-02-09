@@ -9,30 +9,30 @@ zuul:
   routes:
     servicio-categorias:
       path: /categories/**     
-      url: http://167.172.13.45:8889
+      url: 10.245.103.35
       stripPrefix: true      
     servicio-tags:
       path: /tags/**
-      url: http://206.189.254.181:8884
+      url: 10.245.102.67
       sensitive-headers:
       - Cookie , Set-Cookie
     servicio-blogs:
       path: /articles/**
-      url: http://167.172.13.147:8888
+      url: http://174.138.124.201:8888
       sensitive-headers:
       - Cookie , Set-Cookie
     servicio-users:
       path: /users/**
-      url: http://174.138.111.69:8882 
+      url: 10.245.161.11 
       sensitive-headers:
       - Cookie , Set-Cookie
     servicio-comentarios:
       path: /comentarios/**
-      url: http://206.189.255.37:8881     
+      url: 10.245.195.248     
       sensitive-headers:
       - Cookie , Set-Cookie
     servicio-internationalization:
       path: /internationalization/**
-      url: http://157.230.201.85:8880/
+      url: 10.245.80.81
       sensitive-headers:
       - Cookie , Set-Cookie
